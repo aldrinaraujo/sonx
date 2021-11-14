@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="carteira" pageWidth="595" pageHeight="842" whenNoDataType="NoPages" columnWidth="0" leftMargin="18" rightMargin="18" topMargin="18" bottomMargin="18" scriptletClass="wfr.com.report.ScriptletReportScriplet" uuid="5b2ab14d-3dce-4c20-b27e-010896394827">
+	<property name="ireport.scriptlethandling" value="2"/>
+	<property name="ireport.encoding" value="ISO-8859-1"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.xml.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="idpn" class="java.lang.Long"/>
+	<queryString>
+		<![CDATA[Select
+  tab_cad.TAB_CAD_ID,
+  tab_cad.TAB_CAD_CNPJ,
+  tab_cad.TAB_CAD_NOME,
+  tab_ctr.TAB_CTR_DATAVALID,
+  tab_dep.TAB_DEP_ID,
+  tab_dep.TAB_DEP_NOME,
+  tab_ctr.TAB_CTR_NUMERO,
+  tab_ctr.TAB_CTR_ID
+From
+  tab_cad
+  Inner Join tab_ctr On tab_ctr.TAB_CTR_IDCAD = tab_cad.TAB_CAD_ID
+  Inner Join tab_dep On tab_cad.TAB_CAD_ID = tab_dep.TAB_DEP_CAD
+where tab_cad_id =  $P{idpn} 
+/*ORDER_NEW*/]]>
+	</queryString>
+	<field name="tab_cad_id" class="java.lang.Long"/>
+	<field name="tab_cad_cnpj" class="java.lang.String"/>
+	<field name="tab_cad_nome" class="java.lang.String"/>
+	<field name="tab_ctr_datavalid" class="java.sql.Date"/>
+	<field name="tab_dep_id" class="java.lang.Long"/>
+	<field name="tab_dep_nome" class="java.lang.String"/>
+	<field name="tab_ctr_numero" class="java.lang.String"/>
+	<field name="tab_ctr_id" class="java.lang.Long"/>
+	<variable name="consulta" class="java.lang.String">
+		<variableExpression><![CDATA["Select   tab_cad.TAB_CAD_ID,   tab_cad.TAB_CAD_CNPJ,   tab_cad.TAB_CAD_NOME,   tab_ctr.TAB_CTR_DATAVALID,   tab_dep.TAB_DEP_ID,   tab_dep.TAB_DEP_NOME,   tab_ctr.TAB_CTR_NUMERO,   tab_ctr.TAB_CTR_ID From   tab_cad   Inner Join tab_ctr On tab_ctr.TAB_CTR_CAD = tab_cad.TAB_CAD_CNPJ   Inner Join tab_dep On tab_cad.TAB_CAD_ID = tab_dep.TAB_DEP_CAD /*WHERE_NEW*/ /*ORDER_NEW*/ "]]></variableExpression>
+	</variable>
+	<variable name="Entidade" class="java.lang.String">
+		<variableExpression><![CDATA["SELECT     E.ENT_BRASAO,     E.ENT_NOME,     E.ENT_END,     E.ENT_BAIRRO,     M.MUN_NOME,     U.UF_SIGLA FROM     GER_ENTIDADE E LEFT JOIN GER_MUNICIPIO M ON E.MUN_COD = M.MUN_COD     LEFT JOIN GER_UF U ON M.UF_COD = U.UF_COD "]]></variableExpression>
+	</variable>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="209" splitType="Stretch">
+			<rectangle>
+				<reportElement key="Shape1" mode="Opaque" x="12" y="12" width="322" height="183" forecolor="#000000" backcolor="#FFFFFF" uuid="5ce896ed-105c-4f14-942a-8eddb1e2950a"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="Label9" mode="Transparent" x="213" y="21" width="116" height="14" forecolor="#000000" uuid="89cab7c8-1268-4709-8084-db135eb057f4"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Central de atendimento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Label10" mode="Transparent" x="232" y="35" width="78" height="14" forecolor="#000000" uuid="fa8d5b18-2c27-4bf5-b642-057e362c1e1f"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[(92) 3624-5118]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Label11" mode="Transparent" x="232" y="49" width="78" height="14" forecolor="#000000" uuid="187f661d-8bff-405b-bbec-369fa0e56e66"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[(92) 3624-4961]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Label12" mode="Transparent" x="201" y="62" width="122" height="14" forecolor="#000000" uuid="a6f9e196-54d8-4acb-858c-292cea0861c1"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[CNPJ: 63.652-291/0001-12]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Label5" mode="Transparent" x="30" y="84" width="37" height="14" forecolor="#000000" uuid="e582ac1e-e0a6-4eac-ab34-0b810296af94"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Titular]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Label6" mode="Transparent" x="30" y="114" width="68" height="14" forecolor="#000000" uuid="954ed6f3-236e-49e7-832f-af71aea9f0af"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Dependente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Label8" mode="Transparent" x="30" y="168" width="53" height="14" forecolor="#000000" uuid="07d274fc-9d20-40c9-af3d-da61e784b16a"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Validade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Label7" mode="Transparent" x="30" y="143" width="65" height="14" forecolor="#000000" uuid="7f42c4c5-fabe-4693-aafb-fc650cb6522b"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Nº Contrato]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="111" y="84" width="221" height="21" uuid="1275ac47-f583-4b78-a17f-175e93b4ec78"/>
+				<textFieldExpression><![CDATA[$F{tab_cad_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="111" width="205" height="21" uuid="1bbe4ef9-dc6e-4766-92b4-7ff0a1b746c7"/>
+				<textFieldExpression><![CDATA[$F{tab_dep_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="113" y="143" width="203" height="14" uuid="e3e145f2-3d3e-4c08-916f-5c1a76dbea56"/>
+				<textFieldExpression><![CDATA[$F{tab_ctr_numero}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="168" width="206" height="14" uuid="5a08c4f5-86ec-45cb-beb2-b4ae9773742f"/>
+				<textFieldExpression><![CDATA[$F{tab_ctr_datavalid}]]></textFieldExpression>
+				<patternExpression><![CDATA[$F{tab_ctr_datavalid}]]></patternExpression>
+			</textField>
+			<image>
+				<reportElement x="30" y="21" width="140" height="50" uuid="78146ac8-18e5-4f71-8832-cb0f00425252"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
